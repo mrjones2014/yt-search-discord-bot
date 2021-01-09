@@ -7,7 +7,7 @@ const formatSuccessMessage = (url: string) =>
 `🚀 Okay, this is epic.
 ${url}`;
 
-export const searchYoutube = async (event: ValidatedAPIGatewayProxyEvent<typeof schema>) => {
+export const searchYoutube = async function (event: ValidatedAPIGatewayProxyEvent<typeof schema>) {
   if (
     event.body.query == null ||
     typeof event.body.query !== "string" ||

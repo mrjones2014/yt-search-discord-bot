@@ -7,7 +7,7 @@ enum Headers {
   Timestamp = "X-Signature-Timestamp",
 }
 
-export const verifySignature = (event: ValidatedAPIGatewayProxyEvent<typeof schema>): boolean => {
+export const verifySignature = function (event: ValidatedAPIGatewayProxyEvent<typeof schema>): boolean {
   try {
     if (event.body == null) {
       return false;

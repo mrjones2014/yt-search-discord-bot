@@ -7,7 +7,7 @@ const apiQueryTemplate = (query: string) => {
 
 const watchLinkTemplate = (videoId: string) => `https://www.youtube.com/watch?v=${videoId}`;
 
-export const getFirstYoutubeResult = async (query: string) => {
+export const getFirstYoutubeResult = async function (query: string) {
   const result = await axios.get(apiQueryTemplate(query));
   if (result.status !== 200) {
     return undefined;

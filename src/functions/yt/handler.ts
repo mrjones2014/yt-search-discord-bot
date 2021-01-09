@@ -6,7 +6,7 @@ import { ResponseTypes } from 'src/utils/response-types';
 import { verifySignature } from 'src/utils/verify-signature';
 import { searchYoutube } from 'src/utils/search-youtube';
 
-const discordBotHandler: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event: ValidatedAPIGatewayProxyEvent<typeof schema>) => {
+const discordBotHandler: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async function (event: ValidatedAPIGatewayProxyEvent<typeof schema>) {
   // verify Discord bot API key signature
   const isVerified = verifySignature(event);
   if (!isVerified) {
