@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "AMD",
     "target": "ES2017",
     "noImplicitAny": true,
     "preserveConstEnums": true,
     "outDir": "./built",
-    "sourceMap": true
+    "outFile": "./built/index.js",
+    "sourceMap": false,
+    "moduleResolution": "Node"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
