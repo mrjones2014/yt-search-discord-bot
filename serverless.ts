@@ -1,6 +1,7 @@
 import type { AWS } from '@serverless/typescript';
+import { YtFunctionHandler } from "./src/functions/yt";
+import ytFunctionSchema from "./src/utils/yt-function-schema";
 
-import { yt } from './src/functions';
 
 const serverlessConfiguration: AWS = {
   org: "mjonesnetwork",
@@ -27,7 +28,25 @@ const serverlessConfiguration: AWS = {
     },
     lambdaHashingVersion: '20201221',
   },
-  functions: { yt }
+  functions: {
+    yt: {
+      handler: YtFunctionHandler,
+      events: [
+        {
+          http: {
+            method: "post",
+            path: "yt",
+            integration: "LAMBDA",
+            request: {
+              schema: {
+                "application/json": ytFunctionSchema,
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
 }
 
 module.exports = serverlessConfiguration;

@@ -1,5 +1,5 @@
 import { ValidatedAPIGatewayProxyEvent } from "@libs/apiGateway";
-import schema from "src/functions/yt/schema";
+import ytFunctionSchema from "src/utils/yt-function-schema";
 import * as NACL from "tweetnacl";
 
 enum Headers {
@@ -7,7 +7,7 @@ enum Headers {
   Timestamp = "X-Signature-Timestamp",
 }
 
-export const verifySignature = function (event: ValidatedAPIGatewayProxyEvent<typeof schema>): boolean {
+export const verifySignature = function (event: ValidatedAPIGatewayProxyEvent<typeof ytFunctionSchema>): boolean {
   try {
     if (event.body == null) {
       return false;

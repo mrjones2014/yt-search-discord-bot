@@ -1,13 +1,13 @@
 import { formatJSONResponse, ValidatedAPIGatewayProxyEvent } from "@libs/apiGateway";
-import schema from "src/functions/yt/schema";
 import { getFirstYoutubeResult } from "src/utils/get-first-youtube-result";
 import { DiscordResponse, ResponseTypes } from "src/utils/response-types";
+import ytFunctionSchema from "src/utils/yt-function-schema";
 
 const formatSuccessMessage = (url: string) =>
 `🚀 Okay, this is epic.
 ${url}`;
 
-export const searchYoutube = async function (event: ValidatedAPIGatewayProxyEvent<typeof schema>) {
+export const searchYoutube = async function (event: ValidatedAPIGatewayProxyEvent<typeof ytFunctionSchema>) {
   if (
     event.body.query == null ||
     typeof event.body.query !== "string" ||
