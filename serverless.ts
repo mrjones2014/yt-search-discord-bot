@@ -1,6 +1,6 @@
 import type { AWS } from '@serverless/typescript';
 
-import yt from './src/functions/yt';
+import { yt } from './src/functions';
 
 const serverlessConfiguration: AWS = {
   org: "mjonesnetwork",
