@@ -34,7 +34,7 @@ const ytSearch: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event
       type: ResponseTypes.MESSAGE_NO_SOURCE,
       data: {
         tts: false,
-        content: `😭 No results fam. You searched for: ${event.body.query}`,
+        content: "😭 No results fam.",
         embeds: [],
         allowed_mentions: [],
       }
