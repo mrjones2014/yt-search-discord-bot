@@ -7,6 +7,7 @@ export default {
       http: {
         method: 'post',
         path: 'yt',
+        integration: "LAMBDA",
         request: {
           schema: {
             'application/json': schema
