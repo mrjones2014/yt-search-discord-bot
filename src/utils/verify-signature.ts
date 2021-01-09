@@ -1,5 +1,5 @@
 import { ValidatedAPIGatewayProxyEvent } from "@libs/apiGateway";
-import schema from "src/functions/yt/schema";
+import schema from "src/utils/schema";
 import * as NACL from "tweetnacl";
 
 enum Headers {

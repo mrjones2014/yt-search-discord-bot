@@ -1,5 +1,5 @@
 import { formatJSONResponse, ValidatedAPIGatewayProxyEvent } from "@libs/apiGateway";
-import schema from "src/functions/yt/schema";
+import schema from "src/utils/schema";
 import { getFirstYoutubeResult } from "src/utils/get-first-youtube-result";
 import { DiscordResponse, ResponseTypes } from "src/utils/response-types";
 

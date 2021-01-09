@@ -1,6 +1,6 @@
 import 'source-map-support/register';
 import { formatJSONResponse, ValidatedAPIGatewayProxyEvent, ValidatedEventAPIGatewayProxyEvent } from '@libs/apiGateway';
-import schema from './schema';
+import schema from '../utils/schema';
 import { ResponseTypes } from 'src/utils/response-types';
 import { verifySignature } from 'src/utils/verify-signature';
 import { searchYoutube } from 'src/utils/search-youtube';
