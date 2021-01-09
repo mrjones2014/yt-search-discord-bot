@@ -1,7 +1,7 @@
-import schema from './schema';
+import schema from './yt/schema';
 
 export default {
-  handler: `${__dirname.split(process.cwd())[1].substring(1)}/handler.main`,
+  handler: `${__dirname.split(process.cwd())[1].substring(1)}/yt/handler.main`,
   events: [
     {
       http: {
