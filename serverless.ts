@@ -3,6 +3,8 @@ import type { AWS } from '@serverless/typescript';
 import { yt } from './src/functions';
 
 const serverlessConfiguration: AWS = {
+  org: "mjonesnetwork",
+  app: "yt-search-discord-bot",
   service: 'yt-search-discord-bot',
   useDotenv: true,
   frameworkVersion: '2',

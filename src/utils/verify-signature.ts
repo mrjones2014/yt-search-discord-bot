@@ -1,4 +1,4 @@
-import { ValidatedAPIGatewayProxyEvent, ValidatedEventAPIGatewayProxyEvent } from "@libs/apiGateway";
+import { ValidatedAPIGatewayProxyEvent } from "@libs/apiGateway";
 import schema from "src/functions/yt/schema";
 import * as NACL from "tweetnacl";
 
@@ -6,10 +6,6 @@ enum Headers {
   Signature = "X-Signature-Ed25519",
   Timestamp = "X-Signature-Timestamp",
 }
-
-const cantVerifyResult = () => {
-  throw new Error("Cannot verify signature.");
-};
 
 export const verifySignature = (event: ValidatedAPIGatewayProxyEvent<typeof schema>): boolean => {
   try {
