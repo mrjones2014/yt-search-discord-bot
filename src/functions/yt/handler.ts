@@ -1,5 +1,4 @@
 import 'source-map-support/register';
-import { middyfy } from '@libs/lambda';
 import { formatJSONResponse, ValidatedAPIGatewayProxyEvent, ValidatedEventAPIGatewayProxyEvent } from '@libs/apiGateway';
 import schema from './schema';
 import { ResponseTypes } from 'src/utils/response-types';
@@ -7,6 +6,10 @@ import { verifySignature } from 'src/utils/verify-signature';
 import { searchYoutube } from 'src/utils/search-youtube';
 
 const discordBotHandler: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async function (event: ValidatedAPIGatewayProxyEvent<typeof schema>) {
+  console.log(event.body);
+  if (typeof event.body === "string") {
+    event.body = JSON.parse(event.isBase64Encoded ? Buffer.from(event.body, 'base64').toString() : event.body);
+  }
   // verify Discord bot API key signature
   const isVerified = verifySignature(event);
   if (!isVerified) {
@@ -21,4 +24,4 @@ const discordBotHandler: ValidatedEventAPIGatewayProxyEvent<typeof schema> = asy
   return searchYoutube(event);
 };
 
-export const main = middyfy(discordBotHandler);
+export const main = discordBotHandler;
