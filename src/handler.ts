@@ -2,7 +2,7 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import * as yt from "youtube-search-without-api-key";
 import { DiscordResponse, ResponseTypes } from "./response-types";
 
-export const handleRequest = async (event: APIGatewayProxyEvent): APIGatewayProxyResult => {
+export const handleRequest = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   const body = JSON.parse(event.body);
   if (body.query == null || typeof body.query !== "string") {
     return {
@@ -18,7 +18,7 @@ export const handleRequest = async (event: APIGatewayProxyEvent): APIGatewayProx
       type: ResponseTypes.MESSAGE_NO_SOURCE,
       data: {
         tts: false,
-        content: "No results!",,
+        content: "No results!",
         embeds: [],
         allowed_mentions: [],
       },
