@@ -11,7 +11,7 @@ const discordBotHandler: ValidatedEventAPIGatewayProxyEvent<typeof schema> = asy
     event.body = JSON.parse(event.isBase64Encoded ? Buffer.from(event.body, 'base64').toString() : event.body);
   }
   // verify Discord bot API key signature
-  const verificationResult = verifySignature(event, rawBody);
+  const verificationResult = verifySignature(event, rawBody as any as string);
   if (verificationResult != null) {
     return verificationResult;
   }
