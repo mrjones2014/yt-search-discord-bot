@@ -10,9 +10,9 @@ const discordBotHandler: ValidatedEventAPIGatewayProxyEvent<typeof schema> = asy
     event.body = JSON.parse(event.isBase64Encoded ? Buffer.from(event.body, 'base64').toString() : event.body);
   }
   // verify Discord bot API key signature
-  const isVerified = verifySignature(event);
-  if (!isVerified) {
-    return formatJSONResponse({ message: "Failed to verify signature." }, 401);
+  const verificationResult = verifySignature(event);
+  if (verificationResult != null) {
+    return verificationResult;
   }
 
   // check for Discord bot PING request.
