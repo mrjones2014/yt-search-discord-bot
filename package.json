@@ -10,10 +10,10 @@
     "@middy/core": "1.5.0",
     "@middy/http-json-body-parser": "1.5.0",
     "axios": "0.21.1",
-    "discord-interactions": "1.3.3"
+    "discord-interactions": "1.3.3",
+    "source-map-support": "0.5.19"
   },
   "devDependencies": {
-    "source-map-support": "0.5.19",
     "@serverless/typescript": "2.16.0",
     "@types/aws-lambda": "8.10.64",
     "@types/axios": "0.14.0",
