@@ -6,7 +6,7 @@ enum Headers {
   Timestamp = "X-Signature-Timestamp",
 }
 
-export const verifySignature = function (event: ValidatedAPIGatewayProxyEvent<typeof schema>) {
+export const verifySignature = function (event: ValidatedAPIGatewayProxyEvent<typeof schema>, rawBody: string) {
   try {
     if (event.body == null) {
       return formatJSONResponse({ message: "Request signature invalid (no request body)." }, 401);
@@ -15,7 +15,7 @@ export const verifySignature = function (event: ValidatedAPIGatewayProxyEvent<ty
     const signature = event.headers[Headers.Signature];
     const timestamp = event.headers[Headers.Timestamp];
 
-    const isValid = verifyKey(JSON.stringify(event.body), signature, timestamp, process.env.DISCORD_PUBLIC_KEY);
+    const isValid = verifyKey(rawBody, signature, timestamp, process.env.DISCORD_PUBLIC_KEY);
     if (isValid) {
       return undefined;
     }
